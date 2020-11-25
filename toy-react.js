@@ -1,6 +1,6 @@
 const RENDER_TO_DOM = Symbol("render to dom");
 
-export class Componet{
+export class Component{
     constructor(){
       this.props = Object.create(null);
       this.children = [];
@@ -114,8 +114,8 @@ export class Componet{
 
 }
 
-class ElementWrapper extends Componet{
-  constructor(tpye){
+class ElementWrapper extends Component{
+  constructor(type){
     super(type);
     this.type = type;
   }
@@ -181,7 +181,7 @@ class ElementWrapper extends Componet{
   }
 }
 
-class TextWrapper extends Componet{
+class TextWrapper extends Component{
   constructor(content){
     super(content);
     this.type = "#text";
@@ -209,7 +209,7 @@ function replaceContent(range,node){
 export function createElement(type,attributes,...children){
   let e;
   if(typeof type === "string"){
-    e = new ElementWrapper(tyoe);
+    e = new ElementWrapper(type);
   }else{
     e = new type;
   }
